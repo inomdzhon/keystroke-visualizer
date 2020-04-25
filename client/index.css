@@ -1,0 +1,47 @@
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.keypress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 2vmax 1vmax;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.keypress__item {
+  padding: 1vmax;
+}
+
+.keypress__item_type_plus {
+  padding: 0;
+}
+
+.keypress-item {
+  padding: 1vmax;
+  font-family: Arial, -apple-system, sans-serif;
+  font-weight: 700;
+  font-size: 4vmax;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #fff;
+  border-radius: 0.5vmax;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.keypress-item-plus {
+  font-family: Arial, -apple-system, sans-serif;
+  font-weight: 700;
+  font-size: 4vmax;
+  line-height: 1;
+  color: #fff;
+}

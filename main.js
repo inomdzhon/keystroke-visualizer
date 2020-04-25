@@ -1,17 +1,33 @@
-const { app, BrowserWindow } = require('electron')
+/*
+ * TODO
+ *  - Hide App in Mission Control
+ */
 
-function createWindow () {
-  // Создаем окно браузера.
-  let win = new BrowserWindow({
-    width: 800,
-    height: 600,
-    webPreferences: {
-      nodeIntegration: true
-    }
-  })
+// libs
+const { app } = require('electron');
 
-  // и загрузить index.html приложения.
-  win.loadFile('index.html')
+// modules
+const { AppController } = require('./server/AppController.js');
+const { BrowserWindowController } = require('./server/BrowserWindowController.js');
+
+let appController = null;
+
+function handleAppReady() {
+  appController = new AppController(new BrowserWindowController('./client/index.html'));
+
+  appController.onQuit(() => {
+    appController.stop();
+    app.exit(0);
+  });
+
+  appController.start();
 }
 
-app.whenReady().then(createWindow)
+function handleAppWindowAllClosed(event) {
+  // Hook for prevent app quit.
+  event.preventDefault();
+}
+
+// app.dock.hide();
+app.once('ready', handleAppReady);
+app.on('window-all-closed', handleAppWindowAllClosed);

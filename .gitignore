@@ -1,1 +1,4 @@
+# Specific system files should be ignored by user in global `.gitignore`.
+# More info here https://gist.github.com/subfuzion/db7f57fff2fb6998a16c
+
 /node_modules

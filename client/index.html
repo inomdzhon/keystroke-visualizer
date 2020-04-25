@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Keypress Shower</title>
+  <!-- https://electronjs.org/docs/tutorial/security#csp-meta-tag -->
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';"/>
+  <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+
+<div id="root" class="keypress"></div>
+
+<template id="keypress-item">
+  <div class="keypress__item">
+    <div class="keypress-item"></div>
+  </div>
+</template>
+
+<template id="keypress-item-plus">
+  <div class="keypress__item keypress__item_type_plus">
+    <div class="keypress-item-plus">+</div>
+  </div>
+</template>
+
+<script type="text/javascript" src="./index.js"></script>
+
+</body>
+</html>
