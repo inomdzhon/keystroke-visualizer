@@ -1,4 +1,4 @@
-const { Tray, Menu, nativeImage, NativeImage, MenuItem, nativeTheme } = require('electron');
+const { Tray, Menu, nativeImage, nativeTheme } = require('electron');
 const path = require('path');
 
 /**
@@ -26,12 +26,9 @@ class AppController {
 
   /** @param {(BrowserWindowController)} browserWindowController */
   constructor(browserWindowController) {
-    this.isActive = false;
+    this.isActive = true;
     this.theme = AppController.getCurrentThemeName();
     this.tray = new Tray(nativeImage.createEmpty());
-
-    this.setTrayImage();
-    this.setTrayTooltip();
 
     this.handleActivateMenuItemClick = this.handleActivateMenuItemClick.bind(this);
     this.handleQuitClick = this.handleQuitClick.bind(this);
@@ -51,6 +48,8 @@ class AppController {
     ]));
 
     this.browserWindowController = browserWindowController;
+
+    this.updateState();
   }
 
   start() {
@@ -137,17 +136,10 @@ class AppController {
    */
   getImagePath(theme) {
     const pathToImage = this.isActive ? `assets/${theme}/icon-active.png` : `assets/${theme}/icon.png`;
-
-    return path.join(process.cwd(), pathToImage);
+    return nativeImage.createFromPath(path.join(__dirname, `../${pathToImage}`));
   }
 
-  /**
-   * @param {Electron.MenuItem} menuItem
-   * @private
-   */
-  handleActivateMenuItemClick(menuItem) {
-    this.isActive = menuItem.checked;
-
+  updateState() {
     this.setTrayImage();
     this.setTrayTooltip();
 
@@ -156,6 +148,15 @@ class AppController {
     } else {
       this.browserWindowController.destroy();
     }
+  }
+
+  /**
+   * @param {Electron.MenuItem} menuItem
+   * @private
+   */
+  handleActivateMenuItemClick(menuItem) {
+    this.isActive = menuItem.checked;
+    this.updateState();
   }
 
   /** @private */
