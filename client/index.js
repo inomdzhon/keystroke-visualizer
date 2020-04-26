@@ -25,6 +25,7 @@ function computeKeyPressed(type, keyCode) {
 }
 
 const elemRoot = document.getElementById('root');
+const elemContent = elemRoot.querySelector('.js-content');
 
 function renderKeysPressed() {
   const result = [];
@@ -33,5 +34,5 @@ function renderKeysPressed() {
     result.push(`<div class="keypress__item"><div class="keypress-item">${value}</div></div>`);
   });
 
-  elemRoot.innerHTML = result.join(`<div class="keypress__item keypress__item_type_plus"><div class="keypress-item-plus">+</div></div>`);
+  elemContent.innerHTML = result.join(`<div class="keypress__item keypress__item_type_plus"><div class="keypress-item-plus">+</div></div>`);
 }
