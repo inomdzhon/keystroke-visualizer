@@ -4,7 +4,11 @@
   "description": "App for presentation your key presses.",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "postinstall": "electron-builder install-app-deps",
+    "pack": "npm run clean && electron-builder --dir",
+    "dist": "npm run clean && electron-builder",
+    "clean": "rm -rf dist"
   },
   "keywords": [
     "keystroke",
@@ -15,10 +19,21 @@
   ],
   "author": "Inomdzhon Mirdzhamolov",
   "license": "ISC",
-  "devDependencies": {},
+  "devDependencies": {
+    "electron": "^8.2.3",
+    "electron-builder": "^22.5.1"
+  },
   "dependencies": {
-    "electron": "^8.2.0",
     "iohook": "^0.6.5"
+  },
+  "build": {
+    "productName": "Keystroke Visualizer",
+    "files": [
+      "./assets",
+      "./server",
+      "./client",
+      "./main.js"
+    ]
   },
   "iohook": {
     "targets": [

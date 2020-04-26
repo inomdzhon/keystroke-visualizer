@@ -28,6 +28,6 @@ function handleAppWindowAllClosed(event) {
   event.preventDefault();
 }
 
-// app.dock.hide();
+app.dock.hide();
 app.once('ready', handleAppReady);
 app.on('window-all-closed', handleAppWindowAllClosed);
