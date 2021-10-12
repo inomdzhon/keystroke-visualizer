@@ -20,7 +20,7 @@
   "author": "Inomdzhon Mirdzhamolov",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^8.2.3",
+    "electron": "^11.5.0",
     "electron-builder": "^22.5.1"
   },
   "dependencies": {
